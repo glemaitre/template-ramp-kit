@@ -15,6 +15,8 @@ install:
     - python -m ipykernel install --user
     - pip install codecov
     - pip install -q flake8
+    # Install the RAMP workflow
+    - cd $HOME/download
     # for testing
     - git clone https://github.com/glemaitre/ramp-workflow.git
     # - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
@@ -22,7 +24,8 @@ install:
     # for testing
     - git checkout refactoring
     - pip install .
-    - cd ..
+    # go back to the ramp toolkit
+    - cd $TRAVIS_BUILD_DIR
 script:
     - flake8 .
     - jupyter nbconvert --execute template-ramp-kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
