@@ -16,7 +16,7 @@ install:
     - pip install codecov
     - pip install -q flake8
     # Install the RAMP workflow
-    - cd $HOME/download
+    - cd ..
     # for testing
     - git clone https://github.com/glemaitre/ramp-workflow.git
     # - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
