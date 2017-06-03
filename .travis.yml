@@ -15,8 +15,12 @@ install:
     - python -m ipykernel install --user
     - pip install codecov
     - pip install -q flake8
-    - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
+    # for testing
+    - git clone https://github.com/glemaitre/ramp-workflow.git
+    # - git clone https://github.com/paris-saclay-cds/ramp-workflow.git
     - cd ramp-workflow
+    # for testing
+    - git checkout refactoring
     - pip install .
     - cd ..
 script:
