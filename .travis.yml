@@ -35,7 +35,7 @@ install:
     - cd $TRAVIS_BUILD_DIR
     # Download the private data through sftp
     - mkdir private_data
-    - sftp glemaitre@anakim.u-bourgogne.fr:/data/prostate/dijon_dataset.org private_data
+    - sftp -oStrictHostKeyChecking=no glemaitre@anakim.u-bourgogne.fr:/data/prostate/dijon_dataset.org private_data
     - echo private_data
 script:
     - flake8 .
