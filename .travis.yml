@@ -18,7 +18,7 @@ before_install:
 install:
     - conda create -n testenv --yes pip python=$PYTHON_VERSION
     - source activate testenv
-    - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas jupyter seaborn
+    - conda install --yes --quiet numpy scipy matplotlib scikit-learn pandas jupyter seaborn nose
     - python -m ipykernel install --user
     - pip install codecov
     - pip install -q flake8
@@ -35,13 +35,13 @@ install:
     - cd $TRAVIS_BUILD_DIR
     # Download the private data through sftp
     - mkdir private_data
-    - sftp -oStrictHostKeyChecking=no glemaitre@anakim.u-bourgogne.fr:/data/prostate/dijon_dataset.org private_data
+    - sftp -oStrictHostKeyChecking=no glemaitre@anakim.u-bourgogne.fr:/data/ramp-data/template-ramp-kit/train.csv private_data
+    - sftp -oStrictHostKeyChecking=no glemaitre@anakim.u-bourgogne.fr:/data/ramp-data/template-ramp-kit/test.csv private_data
     - echo private_data
 script:
     - flake8 .
     - jupyter nbconvert --execute template-ramp-kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
-    - coverage run test_submissions.py
-    - coverage run test_backend.py
+    - nosetest tests
 after_success:
     - codecov
 notifications:

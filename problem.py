@@ -9,6 +9,7 @@ problem_title = 'Template multiclass'
 prediction_type = rw.prediction_types.multiclass
 workflow = rw.workflows.Classifier()
 prediction_labels = [0, 1, 2]
+target_column_name = 'class'
 
 score_types = [
     rw.score_types.Accuracy(name='acc', n_columns=len(prediction_labels)),
@@ -23,7 +24,6 @@ score_types = [
 
 def get_data(path='.'):
     data = pd.read_csv(os.path.join(path, 'public_data', 'public_train.csv'))
-    target_column_name = 'class'
     y_array = data[target_column_name].values
     X_array = data.drop([target_column_name], axis=1).values
     return X_array, y_array
