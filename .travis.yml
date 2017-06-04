@@ -15,7 +15,7 @@ before_install:
     #                          --path-encrypted-key ".travis/travis_key.enc"
     - |
 
-       declare -r SSH_FILE="$(mktemp -u $HOME/.ssh/travis_key)"
+       declare -r SSH_FILE="$(mktemp -u $HOME/.ssh/XXXXX)"
 
        # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
